@@ -2,13 +2,13 @@
   Author: Edward Seufert - Cborgtech, LLC
 */
 
-const electron = require('electron')
+const electron = require('electron');
 // Module to control application life.
-const app = electron.app
+const app = electron.app;
 // Module to create native browser window.
-const BrowserWindow = electron.BrowserWindow
-const Menu = electron.Menu
-const {ipcMain: ipc } = electron
+const BrowserWindow = electron.BrowserWindow;
+const Menu = electron.Menu;
+const {ipcMain: ipc } = electron;
 
 const path = require('path');
 const url = require('url');
@@ -19,7 +19,7 @@ const installCodeManager = require('./installCodeManager');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let mainWindow;
 let appDir;
 let vaultDir = path.join(app.getAppPath(), '/vaults/');
 let installCodeDir;
@@ -54,16 +54,16 @@ function createWindow () {
   }));
 
   // Open the DevTools.
-   mainWindow.webContents.openDevTools()
+   mainWindow.webContents.openDevTools();
  // Emitted when the window is closed.
   mainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    mainWindow = null
+    mainWindow = null;
   });
   // menu setup
-  const name = electron.app.getName()
+  const name = electron.app.getName();
   const template = [{
       label: "SafeLedger",
       submenu: [
@@ -85,31 +85,31 @@ function createWindow () {
   Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 
 
-};
+}
 
 // /Volumes/KINGSTON/ZVault-darwin-x64/ZVault.app
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', createWindow);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
   // On OS X it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
-    app.quit()
+    app.quit();
   }
-})
+});
 
 app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
-    createWindow()
+    createWindow();
   }
-})
+});
 
 ipc.on('save', (evt, params) => {
   vault.saveVault(path.join(vaultDir,currentVault), JSON.stringify(params.vaultData), params.cryptoKey)
@@ -179,7 +179,7 @@ ipc.on('process-vault-list', (evt, params) => {
   //  console.log("vault " + JSON.stringify(params.vault));
   //  console.log("in modify " +JSON.stringify(params.vaultList));
     const vaults = params.vaultList.vaults;
-    for (i = 0; i < vaults.length; i++) {
+    for (let i = 0; i < vaults.length; i++) {
       if (vaults[i].id == params.vault.id) {
         params.vaultList.vaults[i] = params.vault;
         break;
@@ -277,7 +277,7 @@ ipc.on('process-rotate-crypto', (evt, params) => {
 
 ipc.on('check-license', (evt, params) => {
   // console.log(" check license ");
-  installCodeManager.checkLicense(licenseDir)
+  installCodeManager.checkLicense(installCodeDir)
   .then((val) => {
     if (val.status === "SUCCESS") {
       mainWindow.webContents.send('result-check-license',{keyStatus:val.status});
@@ -290,7 +290,7 @@ ipc.on('check-license', (evt, params) => {
 
 ipc.on('save-license', (evt, params) => {
   // console.log(" main save license " + params.license.key + " " + params.license.fileCode);
-  installCodeManager.saveLicense(path.join(licenseDir,'license.json'),JSON.stringify(params.license))
+  installCodeManager.saveLicense(path.join(installCodeDir,'license.json'),JSON.stringify(params.license))
   .then((val) => {
     if (val.status === "SUCCESS") {
       mainWindow.webContents.send('result-save-license',{status:val.status,statusMsg:'License saved',keyCode:params.license.key});
@@ -389,7 +389,7 @@ ipc.on('process-new-license', (evt, params) => {
         let myVault = {};
         myVault.name = d.getFullYear() + "-"+ d.getMonth();
         myVault.created = Date();
-        idInfo = vault.nextVaultFileName(vaultList);
+        let idInfo = vault.nextVaultFileName(vaultList);
         myVault.id = idInfo.id;
         myVault.file = idInfo.fileName;
         myVault.path = vaultDir;

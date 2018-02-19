@@ -5,8 +5,8 @@
   Author: Edward Seufert - Cborgtech, LLC
 */
 
-const electron = require('electron')
-const remote = electron.remote
+const electron = require('electron');
+const remote = electron.remote;
 const {ipcRenderer : ipc } = electron;
 const crypto = require('crypto');
 const vault = require('./vault');
@@ -104,7 +104,7 @@ window.addEventListener("beforeunload", function (event) {
       for(let group of vaultData.groups){
         if (group.records != null) {
           for (let record of group.records) {
-            record.name = crypto.randomBytes(record.name.length * 2).toString('hex')
+            record.name = crypto.randomBytes(record.name.length * 2).toString('hex');
             if (record.currency != null) {
               record.currency = crypto.randomBytes(record.currency.length * 2).toString('hex');
             }
@@ -468,12 +468,12 @@ const showLogin = () => {
     let statusCode = true;
     let statusMsg = "";
     let rx = new RegExp(/[a-z]/);
-    if (!(rx.test(masterCryptoInput.value))) { statusCode = false; statusMsg='Password must contain at least 1 alpha character' };
+    if (!(rx.test(masterCryptoInput.value))) { statusCode = false; statusMsg='Password must contain at least 1 alpha character'; }
     rx = new RegExp(/[0-9]/);
-    if (!(rx.test(masterCryptoInput.value))) { statusCode = false; statusMsg='Password must contain at least 1 number' };
+    if (!(rx.test(masterCryptoInput.value))) { statusCode = false; statusMsg='Password must contain at least 1 number'; }
     rx = new RegExp(/[A-Z]/);
-    if (!(rx.test(masterCryptoInput.value))) { statusCode = false; statusMsg='Password must contain at least 1 Uppercase letter' };
-    if (!(masterCryptoInput.value.length >= 8)) { statusCode = false; statusMsg='Password must be at least 8 character' };
+    if (!(rx.test(masterCryptoInput.value))) { statusCode = false; statusMsg='Password must contain at least 1 Uppercase letter'; }
+    if (!(masterCryptoInput.value.length >= 8)) { statusCode = false; statusMsg='Password must be at least 8 character'; }
     if (statusCode == false){
       saveBtn.disabled = false;
       status.showStatus({status:'ERROR',statusMsg});
@@ -511,12 +511,12 @@ const showLogin = () => {
     let statusCode = true;
     let statusMsg = "";
     let rx = new RegExp(/[a-z]/);
-    if (!(rx.test(masterCryptoInput.value))) { statusCode = false; statusMsg='Password must contain at least 1 alpha character' };
+    if (!(rx.test(masterCryptoInput.value))) { statusCode = false; statusMsg='Password must contain at least 1 alpha character'; }
     rx = new RegExp(/[0-9]/);
-    if (!(rx.test(masterCryptoInput.value))) { statusCode = false; statusMsg='Password must contain at least 1 number' };
+    if (!(rx.test(masterCryptoInput.value))) { statusCode = false; statusMsg='Password must contain at least 1 number'; }
     rx = new RegExp(/[A-Z]/);
-    if (!(rx.test(masterCryptoInput.value))) { statusCode = false; statusMsg='Password must contain at least 1 Uppercase letter' };
-    if (!(masterCryptoInput.value.length >= 8)) { statusCode = false; statusMsg='Password must be at least 8 character' };
+    if (!(rx.test(masterCryptoInput.value))) { statusCode = false; statusMsg='Password must contain at least 1 Uppercase letter'; }
+    if (!(masterCryptoInput.value.length >= 8)) { statusCode = false; statusMsg='Password must be at least 8 character'; }
     if (statusCode == false){
       saveBtn.disabled = false;
       status.showStatus({status:'ERROR',statusMsg});

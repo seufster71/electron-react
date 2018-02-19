@@ -10,11 +10,17 @@ export default function Login({errorMap, fieldChangeEvent, fieldBlurEvent, butto
   return (
     <div id="detailArea">
       <h1 className="page-header">Welcome to Heracles !</h1>
-      <hr></hr>
+      <hr/>
       <p>Please enter password.</p>
       <p>Must be 8 characters long.</p>
       <p>Must contain numbers and letters</p>
       <p>Must contain Uppercase letters</p>
+      <form>
+        <div className="form-group">
+          <label htmlFor="masterCryptoInput">Password</label>
+          <input type="text" className="form-control" id="masterCryptoInput" maxLength="40"/>
+        </div>
+      </form>
     </div>
 
   );

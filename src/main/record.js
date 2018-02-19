@@ -27,8 +27,8 @@ const renderRecords = (params) => {
         continue;
       }
         const li = document.createElement("LI");
-  				ul.appendChild(li);
-  				const href = document.createElement("A");
+          ul.appendChild(li);
+          const href = document.createElement("A");
           href.addEventListener('click', _ => {
             params.vaultData.recordSelected = i;
             renderRecordDetail({cryptoKey:params.cryptoKey,vaultData:params.vaultData,record:records[i]});
@@ -39,7 +39,7 @@ const renderRecords = (params) => {
             href.className = "item-selected";
           }
           nameString = nameString + "<i class='fa fa-key'></i> "+records[i].name;
-  				href.innerHTML = nameString;
+          href.innerHTML = nameString;
           li.appendChild(href);
     }
     recordArea.appendChild(ul);
