@@ -1,0 +1,87 @@
+
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.container-fluid {
+    overflow-y: hidden; /* don't show content that exceeds my height */
+}
+
+#statusArea {
+  min-height: 65px;
+  max-height: 65px;
+}
+#statusArea .alert {
+  margin-bottom: 0px;
+}
+
+a .highlight {
+  color: yellow;
+}
+.dark1bg {
+  background-color: #5E35B1;
+  color: white;
+}
+.dark2bg {
+  background-color: #512DA8;
+  color: white;
+}
+.dark3bg {
+  background-color: #4527A0;
+  color: white;
+}
+.dark4bg {
+  background-color: #F5F5F5;
+  color: #000;
+}
+.content-middle {
+  min-height: 550px !important;
+  max-height: 550px;
+  overflow-y: auto;
+}
+
+.content-search {
+  padding-top: 15px;
+  min-height: 65px !important;
+  max-height: 65px;
+}
+
+.bottom-space {
+  margin-bottom: 10px;
+  min-height: 40px !important;
+  max-height: 40px;
+}
+.bottom-align-text {
+   position: absolute;
+   bottom: 0;
+   left: 50%;
+   -webkit-transform: translateX(-50%);
+   transform: translateX(-50%)
+}
+
+a {
+  color: white;
+}
+
+.btn {
+  border-radius: 0 !important;
+}
+.badge-circle {
+  width: 3em;
+  height: 3em;
+  border-radius: 50px;
+  background-color: #000000;
+}
+.badge-selected {
+  border: 2px solid #ffffff;
+}
+.item-selected {
+  border: 2px solid #ffffff;
+  background-color: #000000;
+}
+.copy-right {
+  margin-top: 20px;
+  min-height: 40px;
+  max-height: 40px;
+}
